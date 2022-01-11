@@ -111,47 +111,13 @@
 
 						</div>
 
-						<hr>						  					
+												  					
 										  
 						<button type="submit" class="btn btn-primary">Search Availability</button>
 					</form>
 					
 					
 					
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col">
-					<p id="myParagraph">This is some text</p>
-					<p>
-						<button id="colorButton" class="btn btn-outline-secondary">Click me</button>
-					</p>
-
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-3"></div>
-				<div class="col-md-6">
-					<p id="mysecondParagraph">This is more text</p>
-					<p>
-						<button id="secondcolorButton" class="btn btn-outline-secondary">Click me too</button>
-					</p>
-
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col">
-					<p id="mythirdParagraph">Text</p>
-					<p class="paraClass secondClass">Text</p>
-					<p class="paraClass">Text</p>
-					<p id="lastPara" class="">Text</p>
-					<p>
-						<button id="thirdcolorButton" class="btn btn-outline-secondary">Click me again</button>
-					</p>
-
 				</div>
 			</div>
 
@@ -178,57 +144,9 @@
 	<script src="https://unpkg.com/notie"></script>
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-	<!-- java script directive following underneath-->
+	
 	<script>
-		console.log("I am printing from javascript");
-
 		let attention = Prompt();
-
-
-		// Example starter JavaScript for disabling form submissions if there are invalid fields
-		(function () {
-		'use strict'
-			// Fetch all the forms we want to apply custom Bootstrap validation styles to
-			let forms = document.querySelectorAll('.needs-validation')
-
-			// Loop over them and prevent submission
-			Array.prototype.slice.call(forms)
-				.forEach(function (form) {
-				form.addEventListener('submit', function (event) {
-					if (!form.checkValidity()) {
-						event.preventDefault()
-						event.stopPropagation()
-					}
-
-					form.classList.add('was-validated')
-				}, false)
-			})
-		})()
-
-		
-		document.getElementById("colorButton").addEventListener("click", function(){
-			
-			let myEL = document.getElementById("myParagraph");
-
-			if(myEL.classList.contains("redText")) {
-				myEL.classList.remove("redText");
-
-			}else {
-				myEL.classList.add("redText");
-			}
-		})
-
-		document.getElementById("secondcolorButton").addEventListener("click", function(){
-			
-			let myEL = document.getElementById("mysecondParagraph");
-
-			if(myEL.classList.contains("turquoiseText")) {
-				myEL.classList.remove("turquoiseText");
-
-			}else {
-				myEL.classList.add("turquoiseText");
-			}
-		})
 
 		document.getElementById("thirdcolorButton").addEventListener("click", function(){
 			let html = `
@@ -250,9 +168,7 @@
 			</form>
 			`
 
-			//notify("This is my message","error")
-			//notifyModal("title", "<em> hello, world </em>", "success", "My Text for the button");
-
+			
 			attention.custom({msg: html, title: "Choose your dates"});
 		})
 		
@@ -260,6 +176,24 @@
 		const rangepicker = new DateRangePicker(elem, {					
 			format: "dd/mm/yyyy",
 		}); 
+
+		(function () {
+			'use strict';
+			window.addEventListener('load', function (){
+			//Fetch all the forms we want to apply custom Bootstrap validation styles to
+			let forms = document.getElementsByClassName('needs-validation');
+			//Loop over them and prevent submission
+			Array.prototype.filter.call(forms, function(form) {
+				form.addEventListener('submit', function (event) {
+					if (form.checkValidity() == false) {
+						event.preventDefault();
+						event.stopPropagation();
+						}
+						form.classList.add('was-validated');
+					}, false);
+				});
+			}, false);
+		}) ();
 
 		
 		function notify(msg, msgType) {
