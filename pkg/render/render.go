@@ -4,12 +4,16 @@ import (
 	"bytes"
 	"fmt"
 	"html/template"
+
+	"github.com/justinas/nosurf"
 	"github.com/pasiemos/bookings/pkg/config"
+
 	//"html_template_go/pkg/handlers"
-	"github.com/pasiemos/bookings/pkg/models"
 	"log"
 	"net/http"
 	"path/filepath"
+
+	"github.com/pasiemos/bookings/pkg/models"
 )
 
 var functions = template.FuncMap{
@@ -23,14 +27,15 @@ func NewTemplates(a * config.AppConfig)  {
 	app = a
 }
 
-func AddDefaultData (td * models.TemplateData) *models.TemplateData  {
+func AddDefaultData (td * models.TemplateData, r *http.Request) *models.TemplateData  {
+	td.CSRFToken = nosurf.Token(r)
 	return td
 	
 }
 
 //RenderTemplate renders templates using html/template
 //td template data ,import as a third parameter. Is of type handlers.TemplateData
-func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData) {
+func RenderTemplate(w http.ResponseWriter, r *http.Request, tmpl string, td *models.TemplateData) {
 	var tc map[string]*template.Template
 
 	if app.UseCache {
@@ -47,7 +52,7 @@ func RenderTemplate(w http.ResponseWriter, tmpl string, td *models.TemplateData)
 	//create a bytes buffer
 	buf := new(bytes.Buffer)
 
-	td = AddDefaultData(td)
+	td = AddDefaultData(td, r)
 	
 	_ = t.Execute(buf, td)
 
