@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/pasiemos/bookings/pkg/config"
-	"github.com/pasiemos/bookings/pkg/handlers"
-	"github.com/pasiemos/bookings/pkg/render"
+	"github.com/pasiemos/bookings/internal/config"
+	"github.com/pasiemos/bookings/internal/handlers"
+	"github.com/pasiemos/bookings/internal/render"
 	"log"
 	"net/http"
 	"time"
