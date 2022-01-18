@@ -6,14 +6,14 @@ import (
 	"html/template"
 
 	"github.com/justinas/nosurf"
-	"github.com/pasiemos/bookings/pkg/config"
+	"github.com/pasiemos/bookings/internal/config"
 
 	//"html_template_go/pkg/handlers"
 	"log"
 	"net/http"
 	"path/filepath"
 
-	"github.com/pasiemos/bookings/pkg/models"
+	"github.com/pasiemos/bookings/internal/models"
 )
 
 var functions = template.FuncMap{

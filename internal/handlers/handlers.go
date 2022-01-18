@@ -6,9 +6,9 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/pasiemos/bookings/pkg/config"
-	"github.com/pasiemos/bookings/pkg/models"
-	"github.com/pasiemos/bookings/pkg/render"
+	"github.com/pasiemos/bookings/internal/config"
+	"github.com/pasiemos/bookings/internal/models"
+	"github.com/pasiemos/bookings/internal/render"
 )
 
 //Repo the repository used by the handlers
